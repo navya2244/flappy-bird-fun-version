@@ -8,9 +8,9 @@ pygame.init()
 screen = pygame.display.set_mode((800, 800))
 run = True
 bg = pygame.image.load("background.png")
-
+bird_image = pygame.image.load("bluebird-midflap.png")
 bird = Bird(50, 250)
-brid_y = 200
+bird_y = 200
 bird_velocity = 0 
 bird_acceleration = 0.25
 jump_strength = -5 
@@ -20,14 +20,15 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             run = False
-    bird_velocity += bird_acceleration
-    bird.y += bird_velocity
-    for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            if event.key == K_SPACE:
-               bird_velocity = jump_strength
-        if 
-    screen.blit(bird.image, bird.rect)
+            Bird.move(bird, K_SPACE)
+    #     if event.type == pygame.KEYDOWN and event.key == K_SPACE:
+    #         bird_velocity = jump_strength
+    # bird_velocity += bird_acceleration
+    # bird.y += int(bird_velocity)
+    
     screen.blit(bg, (0, 0))
+    screen.blit(bird.image, (50, 250))    
+
     pygame.display.update()
 pygame.quit()
